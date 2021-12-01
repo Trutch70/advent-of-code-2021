@@ -2,7 +2,7 @@
 
 ## Setup
 
-Set your credentials in .env:  
+Set your credentials in .env (copy to .env.local):  
 
 ```
 ADVENT_COOKIE_GA=Kappa
