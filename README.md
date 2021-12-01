@@ -62,3 +62,5 @@ Example:
 
 ### getSecondPartSolution($input): string
 Same as above.
+
+## For the result launch the newly created and implemented command :) good luck!
