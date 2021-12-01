@@ -28,7 +28,7 @@ Example:
     }
 ```
 
-### prepareInput(): mixed
+### prepareInput(): mixed (implementation optional)
 
 Modify the input corresponding to the day of December, f.x explode the text into array. \
 The prepared input will be used as the parameter for the `getFirstPartSolution` and `getSecondPartSolution` functions.
