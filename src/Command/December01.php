@@ -13,6 +13,11 @@ class December01 extends AbstractAdventCommand
         return '1';
     }
 
+    protected function prepareInput($input): array
+    {
+        return explode(PHP_EOL, $input);
+    }
+
     protected function getFirstPartSolution($input): string
     {
         $count = 0;
@@ -48,10 +53,5 @@ class December01 extends AbstractAdventCommand
         }
 
         return (string)$groupedCount;
-    }
-
-    protected function prepareInput($input)
-    {
-        return explode(PHP_EOL, $input);
     }
 }
