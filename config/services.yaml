@@ -27,5 +27,9 @@ services:
             $gidCookie: '%env(ADVENT_COOKIE_GID)%'
             $sessionCookie: '%env(ADVENT_COOKIE_SESSION)%'
 
+    _instanceof:
+        App\Service\Solution\SolutionInterface:
+            tags: ['advent.solution']
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

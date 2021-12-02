@@ -14,7 +14,7 @@ ADVENT_COOKIE_SESSION=hegle-begle
 
 ## Usage
 
-In order to add new solution, add a new Command extending `AbstractAdventCommand` and set the `protected static $defaultName` (command name).
+In order to add new solution, add a new Solution Service extending `App\Service\Solution\AbstractSolution`.
 
 ### getDayNumber(): string
 
@@ -63,4 +63,4 @@ Example:
 ### getSecondPartSolution($input): string
 Same as above.
 
-## For the result launch the newly created and implemented command :) good luck!
+## For the result launch the `app:advent` command with the day number as the first param :) good luck!

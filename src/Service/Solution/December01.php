@@ -2,23 +2,21 @@
 
 declare(strict_types=1);
 
-namespace App\Command;
+namespace App\Service\Solution;
 
-class December01 extends AbstractAdventCommand
+class December01 extends AbstractSolution
 {
-    protected static $defaultName = 'app:01.12';
-
-    protected function getDayNumber(): string
+    public function getDayNumber(): string
     {
         return '1';
     }
 
-    protected function prepareInput($input): array
+    public function prepareInput($input): array
     {
         return explode(PHP_EOL, $input);
     }
 
-    protected function getFirstPartSolution($input): string
+    public function getFirstPartSolution($input): string
     {
         $count = 0;
 
@@ -31,7 +29,7 @@ class December01 extends AbstractAdventCommand
         return (string)$count;
     }
 
-    protected function getSecondPartSolution($input): string
+    public function getSecondPartSolution($input): string
     {
         $groupedMeasurements = [];
         $groupedCount = 0;
