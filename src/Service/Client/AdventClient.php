@@ -2,15 +2,17 @@
 
 declare(strict_types=1);
 
-namespace App\Service;
+namespace App\Service\Client;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Cookie\CookieJar;
 use GuzzleHttp\RequestOptions;
-use Psr\Http\Message\ResponseInterface;
 
 class AdventClient
 {
+    private const INPUT_URL_PATTERN = 'https://adventofcode.com/2021/day/%s/input';
+    private const DOMAIN = 'adventofcode.com';
+
     private $gaCookie;
     private $gidCookie;
     private $sessionCookie;
@@ -22,13 +24,13 @@ class AdventClient
         $this->sessionCookie = $sessionCookie;
     }
 
-    public function get(string $url): ResponseInterface
+    public function getInputByDay(string $day): string
     {
         $client = new Client([
             RequestOptions::COOKIES => $this->getCookies(),
         ]);
 
-        return $client->get($url);
+        return $client->get(sprintf(self::INPUT_URL_PATTERN, $day))->getBody()->getContents();
     }
 
     private function getCookies(): CookieJar
@@ -37,6 +39,6 @@ class AdventClient
             '_ga' => $this->gaCookie,
             '_gid' => $this->gidCookie,
             'session' => $this->sessionCookie,
-        ], 'adventofcode.com');
+        ], self::DOMAIN);
     }
 }

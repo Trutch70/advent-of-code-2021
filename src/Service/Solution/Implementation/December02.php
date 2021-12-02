@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Service\Solution;
+namespace App\Service\Solution\Implementation;
+
+use App\Service\Solution\AbstractSolution;
 
 class December02 extends AbstractSolution
 {

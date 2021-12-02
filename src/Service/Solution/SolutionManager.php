@@ -29,7 +29,7 @@ class SolutionManager
             }
         }
 
-        throw new Exception(sprintf('Did not find solution for day %s', $day));
+        throw new Exception(sprintf('Did not find the solution implementation for day %s', $day));
     }
 
     /**
@@ -37,10 +37,7 @@ class SolutionManager
      */
     public function prepareInput($input)
     {
-        if (!$this->currentSolution instanceof SolutionInterface) {
-            throw new Exception('Solution manager has not been initialized.');
-        }
-
+        $this->checkInitialization();
         return $this->currentSolution->prepareInput($input);
     }
 
@@ -49,10 +46,7 @@ class SolutionManager
      */
     public function getFirstPartSolution($input): string
     {
-        if (!$this->currentSolution instanceof SolutionInterface) {
-            throw new Exception('Solution manager has not been initialized.');
-        }
-
+        $this->checkInitialization();
         return $this->currentSolution->getFirstPartSolution($input);
     }
 
@@ -61,10 +55,17 @@ class SolutionManager
      */
     public function getSecondPartSolution($input): string
     {
+        $this->checkInitialization();
+        return $this->currentSolution->getSecondPartSolution($input);
+    }
+
+    /**
+     * @throws Exception
+     */
+    private function checkInitialization(): void
+    {
         if (!$this->currentSolution instanceof SolutionInterface) {
             throw new Exception('Solution manager has not been initialized.');
         }
-
-        return $this->currentSolution->getSecondPartSolution($input);
     }
 }

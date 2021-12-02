@@ -21,7 +21,7 @@ services:
             - '../src/Kernel.php'
             - '../src/Tests/'
 
-    App\Service\AdventClient:
+    App\Service\Client\AdventClient:
         arguments:
             $gaCookie: '%env(ADVENT_COOKIE_GA)%'
             $gidCookie: '%env(ADVENT_COOKIE_GID)%'

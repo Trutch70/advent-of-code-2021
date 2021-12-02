@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Command;
 
-use App\Service\AdventClient;
+use App\Service\Client\AdventClient;
 use App\Service\Solution\SolutionManager;
 use Exception;
 use Symfony\Component\Console\Command\Command;
@@ -12,10 +12,8 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class AbstractAdventCommand extends Command
+class AdventCommand extends Command
 {
-    private const INPUT_URL_PATTERN = 'https://adventofcode.com/2021/day/%s/input';
-
     protected static $defaultName = 'app:advent';
 
     protected $client;
@@ -38,10 +36,8 @@ class AbstractAdventCommand extends Command
         $day = $input->getArgument('day');
 
         try {
-            $response = $this->client->get(sprintf(self::INPUT_URL_PATTERN, $day));
-
             $this->solutionManager->init($day);
-            $input = $this->solutionManager->prepareInput($response->getBody()->getContents());
+            $input = $this->solutionManager->prepareInput($this->client->getInputByDay($day));
 
             $output->writeln(sprintf('solution to the first part: %s', $this->solutionManager->getFirstPartSolution($input)));
 
